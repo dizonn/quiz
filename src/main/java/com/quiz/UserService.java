@@ -9,16 +9,16 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserService {
 
-  @Autowired
+    @Autowired
   private UserRepository userRepository;
 
-  public void createUsers(List<User> l) {
-    l.forEach(this::createOrUpdateUser);
+  public void createUsers (List<User> l){
+      l.forEach(this::createOrUpdateUser);
   }
 
   @Transactional
   void createOrUpdateUser(User u) {
-    if (userRepository.existsById(u.getId())) {
+    if(userRepository.existsById(u.getId())){
       User c = userRepository.findById(u.getId()).get();
       c.setFirstName(u.getFirstName());
       c.setLastName(u.getLastName());
